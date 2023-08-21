@@ -14,6 +14,7 @@ public class ModelMapperConfig {
     public ModelMapper getModelMapper() {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
+        modelMapper.addConverter(new OdaNumarasiConverter());
         return modelMapper;
     }
 }

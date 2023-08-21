@@ -12,6 +12,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
 
   Optional<User> findByOdaNumarasi(Integer OdaNumarasi);
 
-    Optional<User> findByDolumu(Integer dolumu);
+
 
 }

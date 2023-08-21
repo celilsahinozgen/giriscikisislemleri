@@ -1,11 +1,14 @@
 package com.Resopsion.giriscikisislemleri.service;
 
 
+import com.Resopsion.giriscikisislemleri.config.OdaNumarasiConverter;
 import com.Resopsion.giriscikisislemleri.dto.CikisIslemiDTO;
 import com.Resopsion.giriscikisislemleri.dto.UserCreateDTO;
+import com.Resopsion.giriscikisislemleri.model.OdaNumarasiData;
 import com.Resopsion.giriscikisislemleri.model.SinifFiyatlandirma;
 //import com.Resopsion.giriscikisislemleri.model.SinifFiyatlandirmaYEDEKENUM;
 import com.Resopsion.giriscikisislemleri.model.User;
+import com.Resopsion.giriscikisislemleri.repository.OdaNumarasiRepository;
 import com.Resopsion.giriscikisislemleri.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -22,28 +25,31 @@ public class UserService {
     private final ModelMapper modelMapper;
     private final UserRepository userRepository;
     private final SinifFiyatlandirmaService sinifFiyatlandirmaService;
+    private final OdaNumarasiRepository odaNumarasiRepository;
+
+
 
 
     public UserCreateDTO createUser(UserCreateDTO userCreateDTO, Integer odaNumarasi) {
-        Optional<User> optionalUser = userRepository.findByOdaNumarasi(odaNumarasi);
+        OdaNumarasiData odaNumarasiData = odaNumarasiRepository.findByOdaNumarasi(odaNumarasi)
+                .orElseThrow(() -> new RuntimeException("Bu oda numarası bulunmamaktadır"));
+        Integer dolumu = odaNumarasiData.getDolumu(); // odaNumarasiData nesnesinden dolumu alanını alıyoruz
 
-        if (!optionalUser.isPresent()) {
-            throw new RuntimeException("Bu oda numarası bulunmamaktadır");
-        }
-        User existingUser = optionalUser.get();
-        Integer dolumu = existingUser.getDolumu();
-
-        if (dolumu != null && dolumu == 0) {
+        if (dolumu != null && dolumu == 1) {
             throw new RuntimeException("Giris işlemi oluşturulamadı !!! ZATEN DOLU");
         }
 
         User user = modelMapper.map(userCreateDTO, User.class);
+        user.setOdaNumarasi(odaNumarasiData); // odaNumarasiData nesnesini User nesnesine ayarlıyoruz
 
         // Kullanıcının sınıf tipini DTO'dan al
         user.setSinifTipi(userCreateDTO.getSinifTipi());
 
         return modelMapper.map(userRepository.save(user), UserCreateDTO.class);
     }
+
+
+
 
 
     public CikisIslemiDTO cikisIslemi(Integer odaNumarasi, CikisIslemiDTO cikisIslemiDTO) {
