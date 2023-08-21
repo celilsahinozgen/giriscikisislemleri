@@ -12,7 +12,10 @@ public class SinifFiyatlandirma {
 
 
     @Id
+    private Long id;
+
     private String sinifAdi; // SINIF_1, SINIF_2, SINIF_3 gibi değerler alabilir
+
     private int fiyat;
 
     // Getter ve Setter

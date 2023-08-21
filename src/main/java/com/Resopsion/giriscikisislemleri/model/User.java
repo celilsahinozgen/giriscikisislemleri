@@ -38,11 +38,11 @@ public class User {
     @Column(name = "sifre")
     Integer sifre;
 
-    @Column(name = "OdaNumarasi")
-    Integer odaNumarasi;
 
-    @Column(name = "ODADURUMU")
-    Integer dolumu;
+    @ManyToOne
+    @JoinColumn(name = "oda_numarasi_id")
+    OdaNumarasiData odaNumarasi;
+
 
 
     @Column(name = "OLUSDURMATARIHI")
