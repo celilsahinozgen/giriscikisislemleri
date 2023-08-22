@@ -4,11 +4,17 @@ package com.Resopsion.giriscikisislemleri.dto;
 import com.Resopsion.giriscikisislemleri.valid.TCKNConstraint;
 import com.Resopsion.giriscikisislemleri.valid.UserNameConstraint;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
+import static com.Resopsion.giriscikisislemleri.model.OdaIslemleri.ZAMANPATTERIN;
+
 @Data
-public class UserCreateDTO {
+public class KayitIslemleriDTO {
+
+
+    String sinifTipi; // SINIF_1, SINIF_2, SINIF_3 gibi değerler alabilir
 
     @UserNameConstraint
     String firstName;
@@ -26,9 +32,9 @@ public class UserCreateDTO {
 
     Integer dolumu=1;
 
+    @DateTimeFormat(pattern = ZAMANPATTERIN)
     LocalDateTime createDate= LocalDateTime.now();
 
-    String sinifTipi; // SINIF_1, SINIF_2, SINIF_3 gibi değerler alabilir
 
 
 }

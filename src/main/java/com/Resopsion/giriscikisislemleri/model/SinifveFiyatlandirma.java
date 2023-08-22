@@ -8,7 +8,7 @@ import lombok.Data;
 @Entity
 @Table(name = "sinif_fiyatlandirma")
 @Data
-public class SinifFiyatlandirma {
+public class SinifveFiyatlandirma {
 
 
     @Id

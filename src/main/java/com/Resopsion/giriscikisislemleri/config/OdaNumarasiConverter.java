@@ -1,17 +1,17 @@
 package com.Resopsion.giriscikisislemleri.config;
 
-import com.Resopsion.giriscikisislemleri.model.OdaNumarasiData;
+import com.Resopsion.giriscikisislemleri.model.OdaNumarasi;
 import org.modelmapper.Converter;
 import org.modelmapper.spi.MappingContext;
 
-public class OdaNumarasiConverter implements Converter<OdaNumarasiData, Integer> {
+public class OdaNumarasiConverter implements Converter<OdaNumarasi, Integer> {
     @Override
-    public Integer convert(MappingContext<OdaNumarasiData, Integer> context) {
+    public Integer convert(MappingContext<OdaNumarasi, Integer> context) {
         // Context'ten kaynak nesneyi alır
-        OdaNumarasiData odaNumarasiData = context.getSource();
+        OdaNumarasi odaNumarasi = context.getSource();
 
         // Kaynak nesne null değilse, dolumu değerini döndür
         // Aksi takdirde, null döndür
-        return odaNumarasiData != null ? odaNumarasiData.getDolumu() : null;
+        return odaNumarasi != null ? odaNumarasi.getDolumu() : null;
     }
 }

@@ -1,17 +1,14 @@
 package com.Resopsion.giriscikisislemleri.controller;
 
 
-import com.Resopsion.giriscikisislemleri.model.SinifFiyatlandirma;
-import com.Resopsion.giriscikisislemleri.repository.SinifFiyatlandirmaRepository;
 import com.Resopsion.giriscikisislemleri.service.SinifFiyatlandirmaService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/sinif")
-public class SinifFiyatlandirmaController {
+public class SinifveFiyatlandirmaController {
 
 
         @Autowired

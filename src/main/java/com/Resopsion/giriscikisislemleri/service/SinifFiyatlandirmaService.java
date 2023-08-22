@@ -1,7 +1,7 @@
 package com.Resopsion.giriscikisislemleri.service;
 
-import com.Resopsion.giriscikisislemleri.model.SinifFiyatlandirma;
-import com.Resopsion.giriscikisislemleri.repository.SinifFiyatlandirmaRepository;
+import com.Resopsion.giriscikisislemleri.model.SinifveFiyatlandirma;
+import com.Resopsion.giriscikisislemleri.repository.SinifveFiyatlandirmaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,19 +10,19 @@ import org.springframework.stereotype.Service;
 public class SinifFiyatlandirmaService {
 
 
-    private SinifFiyatlandirmaRepository repository;
+    private SinifveFiyatlandirmaRepository repository;
 
     public int getFiyat(String sinifAdi) {
-        return repository.findById(sinifAdi)
-                .map(SinifFiyatlandirma::getFiyat)
+        return repository.findBySinifAdi(sinifAdi)
+                .map(SinifveFiyatlandirma::getFiyat)
                 .orElseThrow(() -> new RuntimeException("Sınıf bulunamadı: " + sinifAdi));
     }
 
     public void setFiyat(String sinifAdi, int yeniFiyat) {
-        SinifFiyatlandirma sinifFiyatlandirma = repository.findById(sinifAdi)
+        SinifveFiyatlandirma sinifveFiyatlandirma = repository.findBySinifAdi(sinifAdi)
                 .orElseThrow(() -> new RuntimeException("Sınıf bulunamadı: " + sinifAdi));
-        sinifFiyatlandirma.setFiyat(yeniFiyat);
-        repository.save(sinifFiyatlandirma);
+        sinifveFiyatlandirma.setFiyat(yeniFiyat);
+        repository.save(sinifveFiyatlandirma);
     }
 }
 

@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class User {
+public class OdaIslemleri {
 
     public static final String ZAMANPATTERIN= "yyyy-MM-dd HH:mm:ss";
 
@@ -38,11 +38,8 @@ public class User {
     @Column(name = "sifre")
     Integer sifre;
 
-
-    @ManyToOne
-    @JoinColumn(name = "oda_numarasi_id")
-    OdaNumarasiData odaNumarasi;
-
+    @OneToOne
+    OdaNumarasi odaNumarasi;
 
 
     @Column(name = "OLUSDURMATARIHI")
@@ -60,25 +57,8 @@ public class User {
     @Column(name = "ODAFIYATIDEGERI")
     Integer hesaplananDeger;
 
-    private String sinifTipi;
+    @OneToOne
+    private SinifveFiyatlandirma sinifTipi;
 
-//    @NotNull
-//   @Size(min = 2, message = "Must be not null")
-//    @Column(name = "ISIM")
-//    String firstName;
-//
-//    @NotBlank(message = "Must be not blank")
-//    @Column(name = "SOYISIM")
-//    String lastName;
-//
-//    @Column(name = "TCNUMARASI")
-//    String tcNo;
-//
-//    @Email(message = "Email should be valid")
-//    @Column(name = "MAIL")
-//    String mail;
-//
-//    @Pattern(regexp = "[0-9\\s]{12}")
-//    @Column(name = "sifre")
-//    Integer sifre;
+
 }

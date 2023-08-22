@@ -14,7 +14,7 @@ import lombok.Setter;
 @Data
 @Getter
 @Setter
-public class OdaNumarasiData {
+public class OdaNumarasi {
 
 
     @Id
