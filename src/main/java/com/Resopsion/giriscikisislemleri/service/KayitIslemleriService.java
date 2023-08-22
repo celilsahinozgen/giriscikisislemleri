@@ -45,6 +45,8 @@ public class KayitIslemleriService {
         OdaIslemleri user = modelMapper.map(userCreateDTO, OdaIslemleri.class);
         user.setOdaNumarasi(odaNumarasiData);
 
+        odaNumarasiData.setDolumu(1); // Dolumu değerini 1 olarak set edin.
+        odaNumarasiRepository.save(odaNumarasiData); // Değişikliği veritabanına kaydet.
         // SinifveFiyatlandirma nesnesini User nesnesine ayarla
         user.setSinifTipi(sinifTipi);
 
