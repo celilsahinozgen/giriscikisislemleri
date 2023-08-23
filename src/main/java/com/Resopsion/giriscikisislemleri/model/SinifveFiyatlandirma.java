@@ -1,8 +1,6 @@
 package com.Resopsion.giriscikisislemleri.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -12,11 +10,12 @@ public class SinifveFiyatlandirma {
 
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String sinifAdi; // SINIF_1, SINIF_2, SINIF_3 gibi değerler alabilir
 
     private int fiyat;
 
-    // Getter ve Setter
+
 }

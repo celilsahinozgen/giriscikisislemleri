@@ -9,20 +9,23 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class SinifFiyatlandirmaService {
 
+    private final SinifveFiyatlandirmaRepository sinifveFiyatlandirmaRepository;
 
-    private SinifveFiyatlandirmaRepository repository;
 
-    public int getFiyat(String sinifAdi) {
-        return repository.findBySinifAdi(sinifAdi)
-                .map(SinifveFiyatlandirma::getFiyat)
-                .orElseThrow(() -> new RuntimeException("Sınıf bulunamadı: " + sinifAdi));
+    public SinifveFiyatlandirma findSinifTipi(String sinifTipiAdi) {
+        return sinifveFiyatlandirmaRepository.findBySinifAdi(sinifTipiAdi)
+                .orElseThrow(() -> new RuntimeException("Bu sınıf tipi bulunmamaktadır"));
     }
 
-    public void setFiyat(String sinifAdi, int yeniFiyat) {
-        SinifveFiyatlandirma sinifveFiyatlandirma = repository.findBySinifAdi(sinifAdi)
-                .orElseThrow(() -> new RuntimeException("Sınıf bulunamadı: " + sinifAdi));
-        sinifveFiyatlandirma.setFiyat(yeniFiyat);
-        repository.save(sinifveFiyatlandirma);
+
+    public SinifveFiyatlandirma getSinif(String sinifTipi) {
+        return sinifveFiyatlandirmaRepository.findBySinifAdi(sinifTipi).orElseThrow(() -> new RuntimeException("böyle bir sınıf tipi yoktur"));
+    }
+
+
+    public int getFiyat(String sinifTipi) {
+        return sinifveFiyatlandirmaRepository.findBySinifAdi(sinifTipi)
+                .map(SinifveFiyatlandirma::getFiyat)
+                .orElseThrow(() -> new RuntimeException("Bu sınıf tipi bulunmamaktadır"));
     }
 }
-

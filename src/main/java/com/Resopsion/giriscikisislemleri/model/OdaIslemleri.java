@@ -39,7 +39,8 @@ public class OdaIslemleri {
     Integer sifre;
 
     @OneToOne
-    OdaNumarasi odaNumarasi;
+    @JoinColumn(name = "ODANUMARASI")
+    private OdaNumarasi odaNumarasi;
 
 
     @Column(name = "OLUSDURMATARIHI")

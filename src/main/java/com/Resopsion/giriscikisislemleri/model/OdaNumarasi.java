@@ -1,10 +1,7 @@
 package com.Resopsion.giriscikisislemleri.model;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,7 +15,8 @@ public class OdaNumarasi {
 
 
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    Long id;
 
     @Column(name = "OdaNumarasi")
     private Integer odaNumarasi;
