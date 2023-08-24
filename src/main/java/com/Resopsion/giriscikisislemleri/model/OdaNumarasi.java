@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Entity
 @Table(name = "odanumarasi")
 @Data
@@ -13,15 +15,16 @@ import lombok.Setter;
 @Setter
 public class OdaNumarasi {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
 
-    @Column(name = "OdaNumarasi")
+    @Column(name = "odanumarasi")
     private Integer odaNumarasi;
 
-    @Column(name = "Dolumu")
+    @Column(name = "dolumu")
     private Integer dolumu;
 
+    @OneToMany(mappedBy = "odaNumarasi")
+    private List<OdaIslemleri> kullaniciIslemleri;
 }

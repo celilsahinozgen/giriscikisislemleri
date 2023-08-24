@@ -8,14 +8,11 @@ import lombok.Data;
 @Data
 public class SinifveFiyatlandirma {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String sinifAdi; // SINIF_1, SINIF_2, SINIF_3 gibi değerler alabilir
+    private String sinifAdi;
 
     private int fiyat;
-
-
 }

@@ -2,9 +2,7 @@ package com.Resopsion.giriscikisislemleri.model;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
@@ -14,6 +12,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Getter
+@Setter
 public class OdaIslemleri {
 
     public static final String ZAMANPATTERIN= "yyyy-MM-dd HH:mm:ss";
@@ -21,6 +21,16 @@ public class OdaIslemleri {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
+
+    // Diğer alanlar ...
+
+    @ManyToOne
+    @JoinColumn(name = "odanumarasi")
+    private OdaNumarasi odaNumarasi;
+
+    @OneToOne
+    @JoinColumn(name = "sinif_fiyatlandirma_id")
+    private SinifveFiyatlandirma sinifTipi;
 
 
     @Column(name = "ISIM")
@@ -38,10 +48,6 @@ public class OdaIslemleri {
     @Column(name = "sifre")
     Integer sifre;
 
-    @OneToOne
-    @JoinColumn(name = "ODANUMARASI")
-    private OdaNumarasi odaNumarasi;
-
 
     @Column(name = "OLUSDURMATARIHI")
     @DateTimeFormat(pattern = ZAMANPATTERIN)
@@ -58,8 +64,7 @@ public class OdaIslemleri {
     @Column(name = "ODAFIYATIDEGERI")
     Integer hesaplananDeger;
 
-    @OneToOne
-    private SinifveFiyatlandirma sinifTipi;
+
 
 
 }

@@ -6,6 +6,8 @@ import com.Resopsion.giriscikisislemleri.repository.OdaNumarasiRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class OdaNumarasiService {
@@ -25,6 +27,7 @@ public class OdaNumarasiService {
         odaNumarasiRepository.save(odaNumarasiData);
         return odaNumarasiData;
     }
+
 
 
 

@@ -21,5 +21,6 @@ public class CikisIslemleriController {
     public ResponseEntity<CikisIslemiDTO> cikisIslemi(@PathVariable Integer odaNumarasi, @RequestBody CikisIslemiDTO cikisIslemiDTO ){
         CikisIslemiDTO cikisIslemi = cikisIslemleriService.cikisIslemi(odaNumarasi,cikisIslemiDTO);
         return ResponseEntity.ok(cikisIslemi);
+
     }
 }

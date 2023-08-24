@@ -11,7 +11,7 @@ import static com.Resopsion.giriscikisislemleri.model.OdaIslemleri.ZAMANPATTERIN
 public class CikisIslemiDTO {
 
 
-    Integer odaNumarasi;
+
 
     @DateTimeFormat(pattern = ZAMANPATTERIN)
     LocalDateTime cikisTarihi;

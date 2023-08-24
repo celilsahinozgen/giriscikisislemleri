@@ -32,12 +32,14 @@ public class GiriscikisislemleriApplication {
 			oda2.setDolumu(0);
 
 			OdaNumarasi oda3 = new OdaNumarasi();
-			oda2.setId(3L);
-			oda2.setOdaNumarasi(10);
-			oda2.setDolumu(1);
+			oda3.setId(3L);
+			oda3.setOdaNumarasi(103);
+			oda3.setDolumu(1);
 
 			odaNumarasiRepository.save(oda1);
 			odaNumarasiRepository.save(oda2);
+			odaNumarasiRepository.save(oda3);
+
 
 			// SinifveFiyatlandirma örnekleri
 			SinifveFiyatlandirma sinif1 = new SinifveFiyatlandirma();
@@ -53,5 +55,6 @@ public class GiriscikisislemleriApplication {
 
 
 		};
+
 	}
 }
