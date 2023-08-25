@@ -38,15 +38,16 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<ErrorMessage> handleAllExceptions(Exception exception) {
-        ErrorType errorType = INTERNAL_ERROR;
+        ErrorType errorType = BAD_REQUEST_ERROR;
 
         return new ResponseEntity<>(createError(errorType, exception), errorType.getHttpStatus());
     }
 
+
     @ExceptionHandler(JDBCConnectionException.class)
     public final ResponseEntity<ErrorMessage> handleJDBCConnectionException(
-            HttpMessageNotReadableException exception) {
-        ErrorType errorType = BAD_REQUEST_ERROR;
+            JDBCConnectionException exception) {
+        ErrorType errorType = BAD_REQUEST_ERROR; // Burada INTERNAL_ERROR yerine BAD_REQUEST_ERROR kullanın
         return new ResponseEntity<>(createError(errorType, exception), errorType.getHttpStatus());
     }
 

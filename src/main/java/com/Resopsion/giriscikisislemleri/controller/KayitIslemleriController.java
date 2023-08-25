@@ -1,6 +1,8 @@
 package com.Resopsion.giriscikisislemleri.controller;
 
+import com.Resopsion.giriscikisislemleri.dto.CikisIslemiDTO;
 import com.Resopsion.giriscikisislemleri.dto.KayitIslemleriDTO;
+import com.Resopsion.giriscikisislemleri.dto.OdaNotuEkleDTO;
 import com.Resopsion.giriscikisislemleri.model.OdaNumarasi;
 import com.Resopsion.giriscikisislemleri.model.SinifveFiyatlandirma;
 
@@ -35,6 +37,13 @@ public class KayitIslemleriController {
 
 
         return ResponseEntity.ok(newData);
+    }
+
+    @PutMapping("/notguncelleme/{odaNumarasi}")
+    public ResponseEntity<OdaNotuEkleDTO> guncelleme(@PathVariable Integer odaNumarasi, @RequestBody OdaNotuEkleDTO odaNotuEkleDTO ){
+        OdaNotuEkleDTO cikisIslemi = kayitIslemleriService.odaNotuEkle(odaNumarasi,odaNotuEkleDTO);
+        return ResponseEntity.ok(cikisIslemi);
+
     }
 
 

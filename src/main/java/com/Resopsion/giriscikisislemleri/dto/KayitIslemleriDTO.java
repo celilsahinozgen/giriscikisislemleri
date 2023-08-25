@@ -32,6 +32,8 @@ public class KayitIslemleriDTO {
 
     Integer dolumu=1;
 
+    String  odaNotu;
+
     @DateTimeFormat(pattern = ZAMANPATTERIN)
     LocalDateTime createDate= LocalDateTime.now();
 

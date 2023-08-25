@@ -12,4 +12,5 @@ import java.util.Optional;
 public interface OdaNumarasiRepository extends JpaRepository<OdaNumarasi, Long> {
     Optional<OdaNumarasi> findByOdaNumarasi(Integer odaNumarasi);
 
+    List<OdaNumarasi> findByDolumu(int i);
 }

@@ -14,5 +14,5 @@ public interface KayitIslemleriRepository extends JpaRepository<OdaIslemleri,Lon
   Optional<OdaIslemleri> findByOdaNumarasi(OdaNumarasi OdaNumarasi);
 
 
-
+  Optional<OdaIslemleri> findTopByOdaNumarasiOrderByCreateDateDesc(OdaNumarasi odaNumarasiData);
 }

@@ -30,13 +30,14 @@ public class CikisIslemleriService {
     public CikisIslemiDTO cikisIslemi(Integer odaNumarasi, CikisIslemiDTO cikisIslemiDTO) {
         OdaNumarasi odaNumarasiData = odaNumarasiService.cikisIslemiKontrol(odaNumarasi);
         try {
-            Optional<OdaIslemleri> odaNumarasiVarmi = kayitIslemleriRepository.findByOdaNumarasi(odaNumarasiData);
+            Optional<OdaIslemleri> sonOdaIslemiOptional = kayitIslemleriRepository.findTopByOdaNumarasiOrderByCreateDateDesc(odaNumarasiData);
 
-            if (!odaNumarasiVarmi.isPresent()) {
+
+            if (!sonOdaIslemiOptional.isPresent()) {
                 throw new RuntimeException("Bu oda numarası için kayıt bulunmamaktadır");
             }
 
-            OdaIslemleri cikisIslemleri = odaNumarasiVarmi.get();
+            OdaIslemleri cikisIslemleri = sonOdaIslemiOptional.get();
 
             LocalDateTime createDate = cikisIslemleri.getCreateDate();
             LocalDateTime cikisTarihi = cikisIslemiDTO.getCikisTarihi();

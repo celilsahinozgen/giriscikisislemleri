@@ -48,6 +48,9 @@ public class OdaIslemleri {
     @Column(name = "sifre")
     Integer sifre;
 
+    @Column(name = "ODANOTU")
+    String  odaNotu;
+
 
     @Column(name = "OLUSDURMATARIHI")
     @DateTimeFormat(pattern = ZAMANPATTERIN)
