@@ -4,12 +4,31 @@ import com.Resopsion.giriscikisislemleri.model.OdaNumarasi;
 import com.Resopsion.giriscikisislemleri.model.SinifveFiyatlandirma;
 import com.Resopsion.giriscikisislemleri.repository.OdaNumarasiRepository;
 import com.Resopsion.giriscikisislemleri.repository.SinifveFiyatlandirmaRepository;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Contact;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.info.License;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
+@OpenAPIDefinition(
+		info = @Info(
+				title = "GirisCikisIlslemleri Project",
+				version = "1.0.0",
+				description = "Resepsion Projesidir",
+				termsOfService = "runcodenow",
+				contact = @Contact(
+						name = "Celil",
+						email = "celilsahinozgen@gmail.com"),
+				license = @License(
+						name = "licence",
+						url = "runcodenow"
+				)
+		)
+)
 public class GiriscikisislemleriApplication {
 
 	public static void main(String[] args) {
